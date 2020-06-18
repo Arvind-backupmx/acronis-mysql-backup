@@ -4,6 +4,7 @@
 DATE=$(date +"%d-%b-%Y")
 ##############################################################################################
 #This script delete the current avaklbe backup on local inside folder on your server
+cd /tmp
 mkdir -p /root/acronis-plesk-mysql-backup
 /bin/find /root/acronis-plesk-mysql-backup -type f -name "db_*" -mtime +1 -exec rm -fr {} \; || exit 1;
 ##############################################################################################
