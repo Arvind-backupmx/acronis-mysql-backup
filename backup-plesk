@@ -1,6 +1,7 @@
+########################Acronis + MySQL backup on your Plesk Server###########################
 #!/bin/bash
 # This script will take backup of all databases and store in backup directory /root/acronis-plesk-mysql-backup
-DATE=$(date +"%d-%b-%Y")
+DATE=$(date +"%d%m%y-%H:%M:%S")
 ##############################################################################################
 #This script delete the current avaklbe backup on local inside folder on your server
 cd /tmp
