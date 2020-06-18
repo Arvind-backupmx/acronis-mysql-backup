@@ -1,4 +1,3 @@
-########################Acronis + MySQL backup on your Plesk Server###########################
 #!/bin/bash
 # This script will take backup of all databases and store in backup directory /root/acronis-plesk-mysql-backup
 DATE=$(date +"%d-%b-%Y")
@@ -8,7 +7,6 @@ cd /tmp
 mkdir -p /root/acronis-plesk-mysql-backup
 /bin/find /root/acronis-plesk-mysql-backup -type f -name "db_*" -mtime +1 -exec rm -fr {} \; || exit 1;
 ##############################################################################################
-mkdir -p /root/acronis-plesk-mysql-backup
 cd /root/acronis-plesk-mysql-backup
 mkdir db_$DATE
 cd /root/acronis-plesk-mysql-backup/db_$DATE
