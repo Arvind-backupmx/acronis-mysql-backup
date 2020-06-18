@@ -1,0 +1,14 @@
+########################Acronis + MySQL backup on your Plesk Server###########################
+#!/bin/bash
+# This script will take backup of all databases and store in backup directory /var/lib/psa/dumps/manual_backup
+DATE=$(date +"%d-%b-%Y")
+##############################################################################################
+#This script delete the current avaklbe backup on local inside folder on your server
+/bin/find /root/acronis-plesk-mysql-backup -type f -name "db_*" -mtime +1 -exec rm -fr {} \; || exit 1;
+##############################################################################################
+mkdir -p /root/acronis-plesk-mysql-backup
+cd /root/acronis-plesk-mysql-backup
+mkdir db_$DATE
+cd /root/acronis-plesk-mysql-backup/db_$DATE
+MYSQL_PWD=`cat /etc/psa/.psa.shadow` mysql -u admin psa -Ns -e"select name from data_bases where type = 'mysql'" | while read dbname ; do MYSQL_PWD=`cat /etc/psa/.psa.shadow` mysqldump -u admin $dbname > $dbname.sql ; done
+##############################################################################################
